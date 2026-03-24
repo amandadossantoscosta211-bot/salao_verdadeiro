@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salão Senac - Agendamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="meu-header">
+    </header>
+
+    <section class="formulario">
+        <h2>📅 Novo Agendamento</h2>
+
+        <input type="text" id="nome" placeholder="Seu nome">
+        
+        <select id="servico">
+            <option value="">Selecione o serviço</option>
+            <option value="manicure">Manicure</option>
+            <option value="pedicure">Pedicure</option>
+            <option value="spa">spa dos pés</option>
+        </select>
+
+        <input type="date" id="data">
+        <input type="time" id="hora">
+
+        <button onclick="agendar()">Agendar</button>
+    </section>
+
+    <section class="agendamentos" id="listaAgendamentos">
+        <h2>📌 Agendamentos:</h2>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
