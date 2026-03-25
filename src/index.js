@@ -1,3 +1,5 @@
+import "./style.css"
+
 function agendar() {
     const nome = document.getElementById('nome').value;
     const servico = document.getElementById('servico').value;
@@ -47,3 +49,5 @@ function limparCampos() {
     document.getElementById('data').value = '';
     document.getElementById('hora').value = '';
 }
+
+document.getElementById("agendar").addEventListener("click", agendar)
