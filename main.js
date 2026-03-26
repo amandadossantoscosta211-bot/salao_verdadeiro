@@ -1,5 +1,5 @@
-const express = require('express');
-const knex = require('knex');
+import express from 'express';
+import knex from 'knex';
 
 const app = express();
 app.use(express.json());
@@ -10,8 +10,8 @@ const db = knex({
   connection: {
     host: 'localhost',
     user: 'root',
-    password: '1234',
-    database: 'salao_escola'
+    password: 'root',
+    database: 'salao_db'
   }
 });
 
@@ -203,10 +203,18 @@ app.get('/agendamentos/data/:data', async (req, res) => {
 // UPDATE STATUS
 app.put('/agendamento/:id', async (req, res) => {
   const { id } = req.params;
+  const dados = req.body;
+
+  console.log('ID:', id);
+  console.log('BODY:', dados);
+
+  if (!dados || Object.keys(dados).length === 0) {
+    return res.status(400).json({ erro: 'Body vazio para atualização' });
+  }
 
   await db('agendamento')
     .where({ id_agendamento_pk: id })
-    .update(req.body);
+    .update(dados);
 
   res.json({ mensagem: 'Atualizado' });
 });
