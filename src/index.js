@@ -11,7 +11,7 @@ function agendar() {
         return;
     }
 
-    const lista = document.getElementById('listaAgendamentos');
+    /* const lista = document.getElementById('listaAgendamentos');
     const timestamp = new Date(`${data}T${hora}`).getTime();
 
     const card = document.createElement('div');
@@ -38,7 +38,7 @@ function agendar() {
 
     if (!inserido) {
         lista.appendChild(card);
-    }
+    } */
 
     limparCampos();
 }
@@ -51,3 +51,4 @@ function limparCampos() {
 }
 
 document.getElementById("agendar").addEventListener("click", agendar)
+

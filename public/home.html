@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,67 +14,222 @@
 
 <body>
 
-<header>
-  <img class="logo" src="img/destaque-senac-2.png" alt="logo salão">
+  <header>
+    <img class="logo" src="img/destaque-senac-2.png" alt="logo salão">
+    <h1>Salão Escola</h1>
 
-  <h1>Salão Escola</h1>
+    <div>
+      <a href="#" class="btn btn-secondary">Início</a>
+      <a href="#services" class="btn btn-secondary">Serviços</a>
+      <a href="#sobre" class="btn btn-secondary">Sobre Nós</a>
+      <a href="#aprendizado" class="btn btn-secondary">O que aprendemos</a>
+      <a href="https://www.pr.senac.br/principal/index.asp?uep=12" target="_blank" class="btn btn-secondary">Contato</a>
+    </div>
+  </header>
 
-  <div>
-    <a href="#" class="btn btn-secondary">Início</a>
-    <a href="#services" class="btn btn-secondary">Serviços</a>
-    <a href="#" class="btn btn-secondary">Nosso Espaço</a>
-    <a href="#" class="btn btn-secondary">O que aprendemos</a>
-    <a href="https://www.pr.senac.br/principal/index.asp?uep=12" target="_blank" class="btn btn-secondary">Contato</a>
+  <section class="hero1">
+    <h2>✨ Transforme sua beleza com a gente</h2>
+    <p>Agende seu horário como modelo e aproveite serviços profissionais com preços acessíveis</p>
 
-  </div>
-</header>
+    <button class="btn btn-primary abrir-modal">Agendar</button>
+  </section>
 
-<section class="hero">
-  <h2>✨ Transforme sua beleza com a gente</h2>
-  <p>Agende seu horário como modelo e aproveite serviços profissionais com preços acessíveis</p>
+  <section class="services" id="services">
+    <h2>💅 Nossos Serviços</h2>
 
-  <a href="/agendamento.html" class="btn btn-primary">Agendar Agora</a>
-  <a href="#" class="btn btn-secondary">Criar Conta</a>
-</section>
+    <div class="cards">
 
-<section class="services" id="services">
-  <h2>💅 Nossos Serviços</h2>
+      <div class="card">
+        <img src="./img/20260325_170112.jpg">
+        <h3>Manicure</h3>
+        <p>Unhas perfeitas com cuidado profissional e acabamento impecável.</p>
+        <button class="btn btn-primary abrir-modal">Agendar</button>
+      </div>
 
-  <div class="cards">
+      <div class="card">
+        <img src="img/massagem-pes-1673040765703_v2_1x1.jpg">
+        <h3>Spa dos Pés</h3>
+        <p>Relaxamento profundo com hidratação e cuidados especiais.</p>
+        <button class="btn btn-primary abrir-modal">Agendar</button>
+      </div>
 
-    <div class="card">
-      <img src="./img/Unhas_para_Primavera_Tendencias_para_se_Inspirar_2.png">
-      <h3>Manicure</h3>
-      <p>Unhas perfeitas com cuidado profissional e acabamento impecável.</p>
-      <a href="/agendamento.html" class="btn btn-primary">Agendar</a>
+      <div class="card">
+        <img src="img/IMG-20260325-WA0047.jpg">
+        <h3>Pedicure</h3>
+        <p>Pés bem cuidados com técnicas modernas e higienização completa.</p>
+        <button class="btn btn-primary abrir-modal">Agendar</button>
+      </div>
+
     </div>
 
-    <div class="card">
-      <img src="img/massagem-pes-1673040765703_v2_1x1.jpg">
-      <h3>Spa dos Pés</h3>
-      <p>Relaxamento profundo com hidratação e cuidados especiais.</p>
-      <a href="/agendamento.html" class="btn btn-primary">Agendar</a>
+    <div id="modalAgendamento" class="modal">
+      <div class="modal-content">
+
+        <span class="fechar">&times;</span>
+
+        <section class="formulario">
+          <h2>📅 Novo Agendamento</h2>
+
+          <input type="text" id="nome" placeholder="Seu nome">
+
+          <select id="servico">
+            <option value="">Selecione o serviço</option>
+            <option value="manicure">Manicure</option>
+            <option value="pedicure">Pedicure</option>
+            <option value="spa">Spa dos pés</option>
+          </select>
+
+          <input type="date" id="data">
+          <input type="time" id="hora">
+
+          <button id="agendar">Agendar</button>
+        </section>
+
+      </div>
     </div>
 
-    <div class="card">
-      <img src="img/sg-11134201-7rbmx-lqez5xy7lsbu8a.jpg">
-      <h3>Pedicure</h3>
-      <p>Pés bem cuidados com técnicas modernas e higienização completa.</p>
-      <a href="/agendamento.html" class="btn btn-primary">Agendar</a>
+  </section>
+
+  <section class="hero" id="sobre">
+    <h2>Sobre Nós</h2>
+
+    <div style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  ">
+
+      <div style="
+      flex: 1;
+      min-width: 320px;
+      max-width: 700px;
+      height: 350px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    ">
+
+        <img id="carousel-img" src="img/salao.jpg" style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: 0.5s;
+        ">
+      </div>
+
+      <div style="
+      flex: 1;
+      min-width: 280px;
+      max-width: 450px;
+      text-align: left;
+      color: rgb(129, 26, 121);
+    ">
+        <h3>
+          Somos um salão escola dedicado à formação de profissionais da beleza.
+          Aqui, os alunos colocam em prática tudo o que aprendem em sala,
+          sempre com supervisão de instrutores qualificados.
+        </h3>
+        <br>
+        <h4>
+          Trabalhamos com foco em qualidade, atendimento humanizado e técnicas
+          atualizadas, proporcionando uma experiência completa para nossos clientes.
+        </h4>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="services" id="aprendizado">
+    <h2>🎓 O que aprendemos</h2>
 
-<section class="hero">
+    <div class="cards">
 
-</section>
+      <div class="card">
+        <h3>Técnicas Profissionais</h3>
+        <p>Aprendemos procedimentos atualizados de manicure, pedicure e cuidados estéticos.</p>
+      </div>
 
-<footer>
-  <h2>🎓 Ambiente de aprendizado</h2>
-  <p>© 2026 Todos os direitos reservados</p>
-</footer>
+      <div class="card">
+        <h3>Atendimento ao Cliente</h3>
+        <p>Desenvolvemos habilidades de comunicação, empatia e atendimento de qualidade.</p>
+      </div>
 
-<script src="/bundle.js"></script>
+      <div class="card">
+        <h3>Higiene e Segurança</h3>
+        <p>Seguimos rigorosos padrões de biossegurança para garantir a saúde de todos.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <h2>🎓 Ambiente de aprendizado</h2>
+    <p>© 2026 Todos os direitos reservados</p>
+  </footer>
+  <script>
+    const images = [
+      "img/salao.jpg",
+      "img/IMG-20260325-WA0052 (1).jpg",
+      "img/IMG-20260325-WA0049.jpg",
+      "img/IMG-20260325-WA0046.jpg",
+      "img/IMG-20260325-WA0053.jpg",
+
+
+    ];
+
+    let currentIndex = 0;
+    const imgElement = document.getElementById("carousel-img");
+
+    function showImage(index) {
+      imgElement.style.opacity = 0;
+      setTimeout(() => {
+        imgElement.src = images[index];
+        imgElement.style.opacity = 1;
+      }, 200);
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    setInterval(nextImage, 2000);
+  </script>
+  <script>
+    const modal = document.getElementById("modalAgendamento");
+    const abrirBtns = document.querySelectorAll(".abrir-modal");
+    const fechar = document.querySelector(".fechar");
+
+  
+    abrirBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        modal.style.display = "flex";
+      });
+    });
+
+
+    fechar.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
+  <script src="/bundle.js"></script>
 </body>
+
 </html>
