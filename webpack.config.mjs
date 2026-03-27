@@ -9,22 +9,27 @@ export default (env, argv) => {
 
   return {
     mode: isProd ? "production" : "development",
+
     entry: path.join(__dirname, "src", "index.js"),
+
     output: {
       path: path.join(__dirname, "dist"),
       filename: "bundle.js",
       publicPath: "/",
       clean: true
     },
+
+    devtool: isProd ? false : "source-map",
+
     module: {
       rules: [
         {
-          test: /\.(?:js|mjs|cjs)$/,
+          test: /\.(js|mjs|cjs)$/,
           exclude: /node_modules/,
           use: {
             loader: "babel-loader",
             options: {
-              presets: [["@babel/preset-env"]]
+              presets: ["@babel/preset-env"]
             }
           }
         },
@@ -34,12 +39,36 @@ export default (env, argv) => {
         }
       ]
     },
-    devServer: {
-      static: {
-        directory: path.join(__dirname, "public")
-      },
-      compress: true,
-      port: 5173
+
+  devServer: {
+  static: {
+    directory: path.join(__dirname, "public")
+  },
+
+  port: 5173,
+  compress: true,
+  open: true,
+
+  historyApiFallback: {
+    rewrites: [
+      { from: /^\/$/, to: "/login.html" },
+      { from: /^\/login/, to: "/login.html" },
+      { from: /^\/home/, to: "/home.html" }
+    ]
+  },
+
+  proxy: [
+    {
+      context: ["/api"],
+      target: "http://localhost:3000",
+      changeOrigin: true,
+      secure: false
+    }
+  ]
+},
+
+    resolve: {
+      extensions: [".js"]
     }
   };
 };

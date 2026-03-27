@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Salão Escola</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4da6, #ffc1e3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .login-container h2 {
+      color: #fff;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .login-container input:focus {
+      box-shadow: 0 0 0 2px #ff4da6;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4da6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-container button:hover {
+      background: #e60073;
+      transform: scale(1.03);
+    }
+
+    #msg {
+      margin-top: 15px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .login-container::before {
+      content: "💅";
+      font-size: 30px;
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+    <h2>Entrar</h2>
+
+    <input type="email" id="email" placeholder="Digite seu e-mail">
+    <input type="password" id="senha" placeholder="Digite sua senha">
+
+    <button id="btnLogin">Entrar</button>
+
+    <p id="msg"></p>
+  </div>
+
+  <script src="/bundle.js"></script>
+
+</body>
+</html>
