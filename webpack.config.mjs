@@ -40,7 +40,11 @@ export default (env, argv) => {
       ]
     },
 
-  devServer: {
+    resolve: {
+      extensions: [".js"]
+    },
+
+devServer: {
   static: {
     directory: path.join(__dirname, "public")
   },
@@ -51,7 +55,7 @@ export default (env, argv) => {
 
   historyApiFallback: {
     rewrites: [
-      { from: /^\/$/, to: "/login.html" },
+      { from: /^\/$/, to: "/home.html" },
       { from: /^\/login/, to: "/login.html" },
       { from: /^\/home/, to: "/home.html" }
     ]
@@ -62,13 +66,10 @@ export default (env, argv) => {
       context: ["/api"],
       target: "http://localhost:3000",
       changeOrigin: true,
-      secure: false
+      secure: false,
+      pathRewrite: { "^/api": "" }
     }
   ]
-},
-
-    resolve: {
-      extensions: [".js"]
-    }
+}
   };
 };

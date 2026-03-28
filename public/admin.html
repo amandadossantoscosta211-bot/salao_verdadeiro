@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Salão Escola</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Edu NSW ACT Cursive', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f3c6f3, #e97dd7);
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid #e97dd7;
+    }
+
+    .logo {
+      width: 60px;
+    }
+
+    header h1 {
+      color: #a33aa3;
+    }
+
+    header div {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .btn-secondary {
+      background: #e97dd7;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #c85cc2;
+    }
+
+    /* ===== ADMIN SECTION ===== */
+    .admin-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .admin-section h2 {
+      margin-bottom: 30px;
+      color: #a33aa3;
+    }
+
+    /* ===== TABELA ===== */
+    .agendamento-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .agendamento-table thead {
+      background: linear-gradient(135deg, #e97dd7, #c85cc2);
+      color: white;
+    }
+
+    .agendamento-table th {
+      padding: 15px;
+    }
+
+    .agendamento-table td {
+      padding: 12px;
+      color: #444;
+    }
+
+    .agendamento-table tbody tr:nth-child(even) {
+      background: #f9f0f9;
+    }
+
+    .agendamento-table tbody tr:hover {
+      background: #ffe4f8;
+      transition: 0.3s;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 768px) {
+      .agendamento-table {
+        font-size: 12px;
+      }
+
+      .agendamento-table th,
+      .agendamento-table td {
+        padding: 8px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img class="logo" src="img/destaque-senac-2.png" alt="logo salão">
+    <h1>Lista de Agendamentos</h1>
+
+    <div>
+      <a href="/" class="btn btn-secondary">Início</a>
+      <a href="/home.html" class="btn btn-secondary">Home</a>
+      <a href="/login.html" class="btn btn-secondary">Login</a>
+    </div>
+  </header>
+
+  <section class="admin-section">
+    <h2>📋 Agendamentos Recentes</h2>
+
+    <table class="agendamento-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Serviço</th>
+          <th>Data</th>
+          <th>Hora</th>
+        </tr>
+      </thead>
+      <tbody id="agendamentoTableBody">
+
+        <!-- EXEMPLO (depois vem do backend) -->
+        <tr>
+          <td>Amanda</td>
+          <td>Manicure</td>
+          <td>28/03/2026</td>
+          <td>14:00</td>
+        </tr>
+
+        <tr>
+          <td>Maria</td>
+          <td>Spa dos pés</td>
+          <td>29/03/2026</td>
+          <td>10:30</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
+
+  <script src="/bundle.js"></script>
+
+</body>
+</html>
