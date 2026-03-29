@@ -1,7 +1,9 @@
 import "./style.css";
 import axios from "axios";
 
-// URL da API (ajuste se necessário)
+/* =========================
+   🔗 CONFIG API
+========================= */
 const API_URL = "http://localhost:3000";
 
 /* =========================
@@ -23,15 +25,12 @@ async function login() {
         });
 
         alert("✅ Login realizado com sucesso!");
-
-        // salva token
         localStorage.setItem("token", response.data.token);
 
-        // redireciona
-        window.location.href = "home.html";
+        window.location.href = "admin.html";
 
     } catch (error) {
-        console.error(error);
+        console.error("Erro login:", error?.response?.data || error.message);
         alert("❌ Email ou senha inválidos!");
     }
 }
@@ -40,17 +39,22 @@ async function login() {
    📅 AGENDAMENTO
 ========================= */
 function agendar() {
-    const nome = document.getElementById('nome')?.value.trim();
-    const servico = document.getElementById('servico')?.value;
-    const data = document.getElementById('data')?.value;
-    const hora = document.getElementById('hora')?.value;
+    const nome = document.getElementById("nome")?.value.trim();
+    const servico = document.getElementById("servico")?.value;
+    const data = document.getElementById("data")?.value;
+    const hora = document.getElementById("hora")?.value;
 
     if (!nome || !servico || !data || !hora) {
         alert("⚠️ Preencha todos os campos!");
         return;
     }
 
-    enviarAgendamento({ nome, servico, data, hora });
+    enviarAgendamento({
+        id_modelo_fk: 1, // temporário
+        id_servico_fk: servico,
+        data_agendamento: data,
+        horario_agendamento: hora
+    });
 }
 
 async function enviarAgendamento(dados) {
@@ -63,11 +67,40 @@ async function enviarAgendamento(dados) {
         alert("✅ Agendamento realizado com sucesso!");
         limparCampos();
 
-        console.log(response.data);
+        console.log("Resposta:", response.data);
 
     } catch (error) {
-        console.error(error);
-        alert("❌ Erro ao agendar.");
+        console.error("Erro agendamento:", error?.response?.data || error.message);
+        alert(error?.response?.data?.mensagem || "❌ Erro ao agendar.");
+    }
+}
+
+/* =========================
+   📋 LISTAR AGENDAMENTOS (ADMIN)
+========================= */
+async function carregarAgendamentos() {
+    const tabela = document.getElementById("agendamentoTableBody");
+
+    if (!tabela) return;
+
+    try {
+        const response = await axios.get(`${API_URL}/agendamentos/detalhado`);
+
+        tabela.innerHTML = "";
+
+        response.data.forEach(item => {
+            tabela.innerHTML += `
+                <tr>
+                    <td>${item.nome}</td>
+                    <td>${item.nome_servico}</td>
+                    <td>${formatarData(item.data_agendamento)}</td>
+                    <td>${item.horario_agendamento}</td>
+                </tr>
+            `;
+        });
+
+    } catch (error) {
+        console.error("Erro ao carregar:", error);
     }
 }
 
@@ -75,10 +108,10 @@ async function enviarAgendamento(dados) {
    🧹 LIMPAR CAMPOS
 ========================= */
 function limparCampos() {
-    if (document.getElementById('nome')) document.getElementById('nome').value = '';
-    if (document.getElementById('servico')) document.getElementById('servico').value = '';
-    if (document.getElementById('data')) document.getElementById('data').value = '';
-    if (document.getElementById('hora')) document.getElementById('hora').value = '';
+    ["nome", "servico", "data", "hora"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+    });
 }
 
 /* =========================
@@ -86,13 +119,8 @@ function limparCampos() {
 ========================= */
 function verificarLogin() {
     const token = localStorage.getItem("token");
-
     const pagina = window.location.pathname.split("/").pop();
 
-    console.log("Página atual:", pagina);
-    console.log("Token:", token);
-
-    // bloqueia apenas admin.html
     if (pagina === "admin.html" && !token) {
         alert("⚠️ Você precisa estar logada!");
         window.location.href = "login.html";
@@ -100,21 +128,24 @@ function verificarLogin() {
 }
 
 /* =========================
+   📅 FORMATAR DATA
+========================= */
+function formatarData(data) {
+    if (!data) return "";
+    return new Date(data).toLocaleDateString("pt-BR");
+}
+
+/* =========================
    🚀 INICIALIZAÇÃO
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
-    // botão login
     const btnLogin = document.getElementById("btnLogin");
-    if (btnLogin) {
-        btnLogin.addEventListener("click", login);
-    }
+    if (btnLogin) btnLogin.addEventListener("click", login);
 
-    // botão agendar
     const btnAgendar = document.getElementById("agendar");
-    if (btnAgendar) {
-        btnAgendar.addEventListener("click", agendar);
-    }
+    if (btnAgendar) btnAgendar.addEventListener("click", agendar);
 
     verificarLogin();
+    carregarAgendamentos();
 });

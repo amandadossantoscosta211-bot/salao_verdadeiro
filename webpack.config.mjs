@@ -44,6 +44,7 @@ export default (env, argv) => {
       extensions: [".js"]
     },
 
+    
 devServer: {
   static: {
     directory: path.join(__dirname, "public")
@@ -73,3 +74,4 @@ devServer: {
 }
   };
 };
+
