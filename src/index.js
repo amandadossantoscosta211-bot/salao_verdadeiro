@@ -1,14 +1,10 @@
 import "./style.css";
 import axios from "axios";
 
-/* =========================
-   🔗 CONFIG API
-========================= */
+
 const API_URL = "http://localhost:3000";
 
-/* =========================
-   🔐 LOGIN
-========================= */
+
 async function login() {
     const email = document.getElementById("email")?.value.trim();
     const senha = document.getElementById("senha")?.value.trim();
@@ -38,19 +34,25 @@ async function login() {
 /* =========================
    📅 AGENDAMENTO
 ========================= */
-function agendar() {
+async function agendar() {
     const nome = document.getElementById("nome")?.value.trim();
+    const telefone = document.getElementById("telefone")?.value.trim();
     const servico = document.getElementById("servico")?.value;
     const data = document.getElementById("data")?.value;
     const hora = document.getElementById("hora")?.value;
 
-    if (!nome || !servico || !data || !hora) {
+    if (!nome || !telefone || !servico || !data || !hora) {
         alert("⚠️ Preencha todos os campos!");
         return;
     }
 
+    const response = await axios.post(
+            `${API_URL}/modelos`,
+            {nome, telefone}
+        );   
+
     enviarAgendamento({
-        id_modelo_fk: 1, // temporário
+        id_modelo_fk: response.data.id,
         id_servico_fk: servico,
         data_agendamento: data,
         horario_agendamento: hora
@@ -134,6 +136,7 @@ function formatarData(data) {
     if (!data) return "";
     return new Date(data).toLocaleDateString("pt-BR");
 }
+
 
 /* =========================
    🚀 INICIALIZAÇÃO

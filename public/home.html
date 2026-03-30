@@ -22,7 +22,6 @@
       <a href="#" class="btn btn-secondary">Início</a>
       <a href="#services" class="btn btn-secondary">Serviços</a>
       <a href="#sobre" class="btn btn-secondary">Sobre Nós</a>
-      <a href="/login.html" class="btn btn-secondary">Login</a>
       <a href="/admin.html" class="btn btn-secondary">Lista de agendamentos</a>
       <a href="https://www.pr.senac.br/principal/index.asp?uep=12" target="_blank" class="btn btn-secondary">Contato</a>
     </div>
@@ -72,12 +71,14 @@
           <h2>📅 Novo Agendamento</h2>
 
           <input type="text" id="nome" placeholder="Seu nome">
+          <input type="text" id="telefone" placeholder="Telefone">
+
 
           <select id="servico">
             <option value="">Selecione o serviço</option>
-            <option value="manicure">Manicure</option>
-            <option value="pedicure">Pedicure</option>
-            <option value="spa">Spa dos pés</option>
+            <option value="1">Manicure</option>
+            <option value="2">Pedicure</option>
+            <option value="3">Spa dos pés</option>
           </select>
 
           <input type="date" id="data">
@@ -167,10 +168,14 @@
     </div>
   </section>
 
-  <footer>
+  <footer style="display: flex; justify-content: space-between; align-items: center;">
+  <div>
     <h2>🎓 Ambiente de aprendizado</h2>
     <p>© 2026 Todos os direitos reservados</p>
-  </footer>
+  </div>
+
+  <a href="/login.html" class="btn btn-secondary">Login</a>
+</footer>
   <script>
     const images = [
       "img/salao.jpg",
